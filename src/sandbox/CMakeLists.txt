@@ -5,6 +5,7 @@ set( LUA ../../lua-5.3.5/src )
 project (sandbox)
 
 add_definitions(-DLUA_COMPAT_5_2 -DLUA_USE_LINUX) 
+include_directories( ${LUA} )
 
 add_executable(sandbox 
     sandbox.cpp
