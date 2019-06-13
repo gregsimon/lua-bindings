@@ -4,11 +4,10 @@ set( LUA ../../lua-5.3.5/src )
 
 project (sandbox)
 
-add_definitions(-DLUA_COMPAT_5_2 -DLUA_USE_LINUX) 
+add_definitions( -DLUA_USE_LINUX)
 include_directories( ${LUA} )
 
-add_executable(sandbox 
-    sandbox.cpp
+set (SOURCES sandbox.cpp
     ${LUA}/lapi.c
     ${LUA}/lauxlib.c
     ${LUA}/lbaselib.c
@@ -41,7 +40,8 @@ add_executable(sandbox
     ${LUA}/lundump.c 
     ${LUA}/lutf8lib.c 
     ${LUA}/lvm.c 
-    ${LUA}/lzio.c 
-    )
+    ${LUA}/lzio.c  )
+
+add_executable(sandbox ${SOURCES} )
 
 target_link_libraries(sandbox dl)
