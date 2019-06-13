@@ -7,6 +7,8 @@ extern "C" {
   #include "lauxlib.h"
 }
 
+void load_syscall_thunks(lua_State* L);
+
 extern "C" int error_cb(lua_State* L)
 {
   int idx = lua_gettop(L);
@@ -26,6 +28,8 @@ int main(int argc, char** argv)
     lua_State *L = luaL_newstate();
     luaL_openlibs(L);
 
+    load_syscall_thunks(L);
+
     lua_atpanic(L, error_cb);
 
     luaL_loadfile(L, argv[1]);
@@ -34,4 +38,21 @@ int main(int argc, char** argv)
     std::cerr << "end\n";
 
     return 0;
+}
+
+extern "C" int zx_clock_get_monotonic(lua_State* L)
+{
+  lua_pushinteger(L, 1000);
+  return 1;
+}
+
+void load_syscall_thunks(lua_State* L)
+{
+  lua_newtable(L);
+
+  lua_pushstring(L, "clock_get_monotonic");
+  lua_pushcfunction(L, zx_clock_get_monotonic);
+  lua_settable(L, -3);
+
+  lua_setglobal(L, "zx");
 }
