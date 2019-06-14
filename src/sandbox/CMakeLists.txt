@@ -5,10 +5,11 @@ set( LUA ../../lua-5.3.5/src )
 project (sandbox)
 
 add_definitions( -DLUA_USE_LINUX)
-include_directories( ${LUA} )
+include_directories( ${LUA} .. )
 
 set (SOURCES sandbox.cpp
-    zx_system.cpp
+    ../zx_system.cpp
+    ../zx_handles.cpp
     ${LUA}/lapi.c
     ${LUA}/lauxlib.c
     ${LUA}/lbaselib.c
