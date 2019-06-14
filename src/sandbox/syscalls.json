@@ -1,0 +1,6956 @@
+{
+  "syscalls": [
+    {
+      "name": "clock_get",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Acquire", "the", "current", "time", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "clock_id",
+          "type": "zx_clock_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_time_t"
+    },
+    {
+      "name": "clock_get_new",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Acquire", "the", "current", "time", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "clock_id",
+          "type": "zx_clock_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_time_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "clock_get_monotonic",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Acquire", "the", "current", "monotonic", "time", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "zx_time_t"
+    },
+    {
+      "name": "nanosleep",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "High", "resolution", "sleep", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "ticks_get",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Read", "the", "number", "of", "high", "-", "precision", "timer", "ticks", "since", "boot", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "zx_ticks_t"
+    },
+    {
+      "name": "ticks_per_second",
+      "attributes": [
+        "*",
+        "vdsocall",
+        "const"
+      ],
+      "top_description": [
+        "Read", "the", "number", "of", "high", "-", "precision", "timer", "ticks", "in", "a", "second", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "zx_ticks_t"
+    },
+    {
+      "name": "deadline_after",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Convert", "a", "time", "relative", "to", "now", "to", "an", "absolute", "deadline", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "nanoseconds",
+          "type": "zx_duration_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_time_t"
+    },
+    {
+      "name": "clock_adjust",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "clock_id",
+          "type": "zx_clock_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "int64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "system_get_dcache_line_size",
+      "attributes": [
+        "*",
+        "vdsocall",
+        "const"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "uint32_t"
+    },
+    {
+      "name": "system_get_num_cpus",
+      "attributes": [
+        "*",
+        "vdsocall",
+        "const"
+      ],
+      "top_description": [
+        "Get", "number", "of", "logical", "processors", "on", "the", "system", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "uint32_t"
+    },
+    {
+      "name": "system_get_version",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Get", "version", "string", "for", "system", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "version",
+          "type": "char",
+          "is_array": true,
+          "array_multipliers": [
+            "version_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "version_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "system_get_physmem",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Get", "amount", "of", "physical", "memory", "on", "the", "system", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "uint64_t"
+    },
+    {
+      "name": "system_get_features",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Get", "supported", "hardware", "capabilities", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "kind",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "features",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "features"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "cache_flush",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Flush", "CPU", "data", "and", "/", "or", "instruction", "caches", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "addr",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "handle_close",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Close", "a", "handle", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+            "handle_release_always"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "handle_close_many",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Close", "a", "number", "of", "handles", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "handles",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_multipliers": [
+            "num_handles"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "num_handles",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "handle_duplicate",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Duplicate", "a", "handle", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_DUPLICATE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "rights",
+          "type": "zx_rights_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "handle_replace",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Replace", "a", "handle", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+            "handle_release_always"
+          ]
+        },
+        {
+          "name": "rights",
+          "type": "zx_rights_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_wait_one",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Wait", "for", "signals", "on", "an", "object", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_WAIT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "signals",
+          "type": "zx_signals_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "observed",
+          "type": "zx_signals_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_wait_many",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Wait", "for", "signals", "on", "multiple", "objects", "."
+      ],
+      "requirements": [
+        "Every", "entry", "of", "items", "must", "have", "a", "handle", "field", "with", "ZX_RIGHT_WAIT", "."
+      ],
+      "arguments": [
+        {
+          "name": "items",
+          "type": "zx_wait_item_t",
+          "is_array": true,
+          "array_multipliers": [
+            "count"
+          ],
+          "attributes": [
+            "INOUT"
+          ]
+        },
+        {
+          "name": "count",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_wait_async",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Subscribe", "for", "signals", "on", "an", "object", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_WAIT", ".",
+        "port", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "port",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "key",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "signals",
+          "type": "zx_signals_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_signal",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Signal", "an", "object", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_SIGNAL", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "clear_mask",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "set_mask",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_signal_peer",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Signal", "an", "object", "'", "s", "peer", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_SIGNAL_PEER", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "clear_mask",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "set_mask",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_get_property",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Ask", "for", "various", "properties", "of", "various", "kernel", "objects", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_GET_PROPERTY", ".",
+        "If", "property", "is", "ZX_PROP_PROCESS_DEBUG_ADDR", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", ".",
+        "If", "property", "is", "ZX_PROP_PROCESS_VDSO_BASE_ADDRESS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", ".",
+        "If", "property", "is", "ZX_PROP_SOCKET_RX_THRESHOLD", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", ".",
+        "If", "property", "is", "ZX_PROP_SOCKET_TX_THRESHOLD", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "property",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "value_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "value_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_set_property",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Set", "various", "properties", "of", "various", "kernel", "objects", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_SET_PROPERTY", ".",
+        "If", "property", "is", "ZX_PROP_PROCESS_DEBUG_ADDR", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", ".",
+        "If", "property", "is", "ZX_PROP_SOCKET_RX_THRESHOLD", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", ".",
+        "If", "property", "is", "ZX_PROP_SOCKET_TX_THRESHOLD", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", ".",
+        "If", "property", "is", "ZX_PROP_JOB_KILL_ON_OOM", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "property",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "value_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "value_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_get_info",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Query", "information", "about", "an", "object", "."
+      ],
+      "requirements": [
+        "If", "topic", "is", "ZX_INFO_PROCESS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_JOB", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_PROCESS_THREADS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_ENUMERATE", ".",
+        "If", "topic", "is", "ZX_INFO_JOB_CHILDREN", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "and", "have", "ZX_RIGHT_ENUMERATE", ".",
+        "If", "topic", "is", "ZX_INFO_JOB_PROCESSES", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "and", "have", "ZX_RIGHT_ENUMERATE", ".",
+        "If", "topic", "is", "ZX_INFO_THREAD", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_THREAD_EXCEPTION_REPORT", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_THREAD_STATS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_TASK_STATS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_PROCESS_MAPS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_PROCESS_VMOS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_VMO", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", ".",
+        "If", "topic", "is", "ZX_INFO_VMAR", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_CPU_STATS", ",", "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", ".",
+        "If", "topic", "is", "ZX_INFO_KMEM_STATS", ",", "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", ".",
+        "If", "topic", "is", "ZX_INFO_RESOURCE", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_RESOURCE", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_HANDLE_COUNT", ",", "handle", "must", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_BTI", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_BTI", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_PROCESS_HANDLE_STATS", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_INSPECT", ".",
+        "If", "topic", "is", "ZX_INFO_SOCKET", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "and", "have", "ZX_RIGHT_INSPECT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "topic",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        },
+        {
+          "name": "avail",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_get_child",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Given", "a", "kernel", "object", "with", "children", "objects", ",", "obtain", "a", "handle", "to", "the", "child", "specified", "by", "the", "provided", "kernel", "object", "id", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_ENUMERATE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "koid",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "rights",
+          "type": "zx_rights_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "object_set_profile",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Apply", "a", "scheduling", "profile", "to", "a", "thread", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_MANAGE_THREAD", ".",
+        "profile", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROFILE", "and", "have", "ZX_RIGHT_APPLY_PROFILE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "profile",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "channel", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out0",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        },
+        {
+          "name": "out1",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_read",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "a", "message", "from", "a", "channel", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_CHANNEL", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bytes",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "num_bytes"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "handles",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_multipliers": [
+            "num_handles"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "num_bytes",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "num_handles",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual_bytes",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        },
+        {
+          "name": "actual_handles",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_read_etc",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "a", "message", "from", "a", "channel", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_CHANNEL", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bytes",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "num_bytes"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "handles",
+          "type": "zx_handle_info_t",
+          "is_array": true,
+          "array_multipliers": [
+            "num_handles"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "num_bytes",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "num_handles",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual_bytes",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        },
+        {
+          "name": "actual_handles",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_write",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Write", "a", "message", "to", "a", "channel", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_CHANNEL", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "Every", "entry", "of", "handles", "must", "have", "ZX_RIGHT_TRANSFER", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bytes",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "num_bytes"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "num_bytes",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "handles",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_multipliers": [
+            "num_handles"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "num_handles",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_write_etc",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Write", "a", "message", "to", "a", "channel", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_CHANNEL", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "Every", "entry", "of", "handles", "must", "have", "ZX_RIGHT_TRANSFER", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bytes",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "num_bytes"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "num_bytes",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "handles",
+          "type": "zx_handle_disposition_t",
+          "is_array": true,
+          "array_multipliers": [
+            "num_handles"
+          ],
+          "attributes": [
+            "INOUT"
+          ]
+        },
+        {
+          "name": "num_handles",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_call_noretry",
+      "attributes": [
+        "*",
+        "internal"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_CHANNEL", "and", "have", "ZX_RIGHT_READ", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "All", "wr_handles", "of", "args", "must", "have", "ZX_RIGHT_TRANSFER", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "args",
+          "type": "zx_channel_call_args_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "actual_bytes",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual_handles",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_call_finish",
+      "attributes": [
+        "*",
+        "internal"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "args",
+          "type": "zx_channel_call_args_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "actual_bytes",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual_handles",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "channel_call",
+      "attributes": [
+        "*",
+        "blocking",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Send", "a", "message", "to", "a", "channel", "and", "await", "a", "reply", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_CHANNEL", "and", "have", "ZX_RIGHT_READ", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "All", "wr_handles", "of", "args", "must", "have", "ZX_RIGHT_TRANSFER", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "args",
+          "type": "zx_channel_call_args_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "actual_bytes",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual_handles",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "socket_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "socket", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out0",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        },
+        {
+          "name": "out1",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "socket_write",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Write", "data", "to", "a", "socket", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "socket_read",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "data", "from", "a", "socket", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "socket_share",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Send", "another", "socket", "object", "via", "a", "socket", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "socket_to_share", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "and", "have", "ZX_RIGHT_TRANSFER", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "socket_to_share",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "socket_accept",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Receive", "another", "socket", "object", "via", "a", "socket", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_socket",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "socket_shutdown",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Prevent", "reading", "or", "writing", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_SOCKET", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "thread_exit",
+      "attributes": [
+        "*",
+        "noreturn"
+      ],
+      "top_description": [
+        "Terminate", "the", "current", "running", "thread", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "void"
+    },
+    {
+      "name": "thread_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "thread", "."
+      ],
+      "requirements": [
+        "process", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_MANAGE_THREAD", "."
+      ],
+      "arguments": [
+        {
+          "name": "process",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "name",
+          "type": "char",
+          "is_array": true,
+          "array_multipliers": [
+            "name_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "name_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "thread_start",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Start", "execution", "on", "a", "thread", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_MANAGE_THREAD", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "thread_entry",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "stack",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "arg1",
+          "type": "uintptr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "arg2",
+          "type": "uintptr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "thread_read_state",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "one", "aspect", "of", "thread", "state", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "thread_write_state",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Write", "one", "aspect", "of", "thread", "state", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "process_exit",
+      "attributes": [
+        "*",
+        "noreturn"
+      ],
+      "top_description": [
+        "Exits", "the", "currently", "running", "process", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "retcode",
+          "type": "int64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "void"
+    },
+    {
+      "name": "process_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "new", "process", "."
+      ],
+      "requirements": [
+        "job", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "and", "have", "ZX_RIGHT_MANAGE_PROCESS", "."
+      ],
+      "arguments": [
+        {
+          "name": "job",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "name",
+          "type": "char",
+          "is_array": true,
+          "array_multipliers": [
+            "name_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "name_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "proc_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        },
+        {
+          "name": "vmar_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "process_start",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Start", "execution", "on", "a", "process", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "thread", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "arg1", "must", "have", "ZX_RIGHT_TRANSFER", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "thread",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "entry",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "stack",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "arg1",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+            "handle_release_always"
+          ]
+        },
+        {
+          "name": "arg2",
+          "type": "uintptr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "process_read_memory",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "from", "the", "given", "process", "'", "s", "address", "space", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_READ", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vaddr",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "process_write_memory",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Write", "into", "the", "given", "process", "'", "s", "address", "space", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vaddr",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "job_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "new", "job", "."
+      ],
+      "requirements": [
+        "parent_job", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "and", "have", "ZX_RIGHT_MANAGE_JOB", "."
+      ],
+      "arguments": [
+        {
+          "name": "parent_job",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "job_set_policy",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Set", "job", "security", "and", "resource", "policies", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "and", "have", "ZX_RIGHT_SET_POLICY", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "topic",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "policy",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "count"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "task_bind_exception_port",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Bind", "to", ",", "or", "unbind", "from", ",", "the", "exception", "port", "corresponding", "to", "a", "given", "job", ",", "process", ",", "or", "thread", "."
+      ],
+      "requirements": [
+        "port", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "port",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "key",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "task_suspend",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Suspend", "the", "given", "task", ".", "Currently", "only", "thread", "or", "process", "handles", "may", "be", "suspended", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "or", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "token",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "task_suspend_token",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Suspend", "the", "given", "task", ".", "Currently", "only", "thread", "or", "process", "handles", "may", "be", "suspended", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", "or", "ZX_OBJ_TYPE_PROCESS", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "token",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "task_resume_from_exception",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Resume", "the", "given", "task", "after", "an", "exception", "has", "been", "reported", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_THREAD", ".",
+        "port", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "port",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "task_create_exception_channel",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "an", "exception", "channel", "for", "a", "given", "job", ",", "process", ",", "or", "thread", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_INSPECT", "and", "have", "ZX_RIGHT_DUPLICATE", "and", "have", "ZX_RIGHT_TRANSFER", "and", "have", "ZX_RIGHT_MANAGE_THREAD", ".",
+        "If", "handle", "is", "of", "type", "ZX_OBJ_TYPE_JOB", "or", "ZX_OBJ_TYPE_PROCESS", ",", "it", "must", "have", "ZX_RIGHT_ENUMERATE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "task_kill",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Kill", "the", "provided", "task", "(", "job", ",", "process", ",", "or", "thread", ")", "."
+      ],
+      "requirements": [
+        "handle", "must", "have", "ZX_RIGHT_DESTROY", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "exception_get_thread",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "handle", "for", "the", "exception", "'", "s", "thread", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_EXCEPTION", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "exception_get_process",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "handle", "for", "the", "exception", "'", "s", "process", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_EXCEPTION", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "event_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "an", "event", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "eventpair_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "an", "event", "pair", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out0",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        },
+        {
+          "name": "out1",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "futex_wait",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Wait", "on", "a", "futex", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "value_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "current_value",
+          "type": "zx_futex_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "new_futex_owner",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "futex_wake",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Wake", "some", "number", "of", "threads", "waiting", "on", "a", "futex", ",", "optionally", "transferring", "ownership", "to", "the", "thread", "which", "was", "woken", "in", "the", "process", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "value_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "wake_count",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "futex_requeue",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Wake", "some", "number", "of", "threads", "waiting", "on", "a", "futex", ",", "and", "move", "more", "waiters", "to", "another", "wait", "queue", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "value_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "wake_count",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "current_value",
+          "type": "zx_futex_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "requeue_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "requeue_count",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "new_requeue_owner",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "futex_wake_single_owner",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Wake", "some", "number", "of", "threads", "waiting", "on", "a", "futex", ",", "optionally", "transferring", "ownership", "to", "the", "thread", "which", "was", "woken", "in", "the", "process", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "value_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "futex_requeue_single_owner",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Wake", "some", "number", "of", "threads", "waiting", "on", "a", "futex", ",", "and", "move", "more", "waiters", "to", "another", "wait", "queue", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "value_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "current_value",
+          "type": "zx_futex_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "requeue_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "requeue_count",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "new_requeue_owner",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "futex_get_owner",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Fetch", "the", "koid", "current", "owner", "of", "a", "futex", ",", "if", "any", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "value_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "koid",
+          "type": "zx_koid_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "OUT"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "port_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "an", "IO", "port", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "port_queue",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Queue", "a", "packet", "to", "a", "port", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "packet",
+          "type": "zx_port_packet_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "port_wait",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Wait", "for", "a", "packet", "arrival", "in", "a", "port", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "packet",
+          "type": "zx_port_packet_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "OUT"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "port_cancel",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Cancels", "async", "port", "notifications", "on", "an", "object", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "source",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "key",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "timer_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "timer", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "clock_id",
+          "type": "zx_clock_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "timer_set",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Start", "a", "timer", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_TIMER", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "deadline",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "slack",
+          "type": "zx_duration_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "timer_cancel",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Cancel", "a", "timer", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_TIMER", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "VM", "object", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_read",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Read", "bytes", "from", "the", "VMO", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_write",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Write", "bytes", "to", "the", "VMO", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_get_size",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "the", "current", "size", "of", "a", "VMO", "object", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_set_size",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Resize", "a", "VMO", "object", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_op_range",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Perform", "an", "operation", "on", "a", "range", "of", "a", "VMO", "."
+      ],
+      "requirements": [
+        "If", "op", "is", "ZX_VMO_OP_COMMIT", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "If", "op", "is", "ZX_VMO_OP_DECOMMIT", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "If", "op", "is", "ZX_VMO_OP_CACHE_SYNC", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", ".",
+        "If", "op", "is", "ZX_VMO_OP_CACHE_INVALIDATE", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "If", "op", "is", "ZX_VMO_OP_CACHE_CLEAN", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", ".",
+        "If", "op", "is", "ZX_VMO_OP_CACHE_CLEAN_INVALIDATE", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "op",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "INOUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_clone",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Shim", "for", "vmo_create_child"
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_DUPLICATE", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_create_child",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "child", "of", "a", "VM", "Object", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_DUPLICATE", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_set_cache_policy",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Set", "the", "caching", "policy", "for", "pages", "held", "by", "a", "VMO", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_MAP", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "cache_policy",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_replace_as_executable",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Add", "execute", "rights", "to", "a", "VMO", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", ".",
+        "vmex", "must", "have", "resource", "kind", "ZX_RSRC_KIND_VMEX", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+            "handle_release_always"
+          ]
+        },
+        {
+          "name": "vmex",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmar_allocate",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Allocate", "a", "new", "subregion", "."
+      ],
+      "requirements": [
+        "If", "options", "&", "ZX_VM_CAN_MAP_READ", ",", "parent_vmar", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", "and", "have", "ZX_RIGHT_READ", ".",
+        "If", "options", "&", "ZX_VM_CAN_MAP_WRITE", ",", "parent_vmar", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "If", "options", "&", "ZX_VM_CAN_MAP_EXECUTE", ",", "parent_vmar", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", "and", "have", "ZX_RIGHT_EXECUTE", "."
+      ],
+      "arguments": [
+        {
+          "name": "parent_vmar",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "zx_vm_option_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "child_vmar",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        },
+        {
+          "name": "child_addr",
+          "type": "zx_vaddr_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmar_destroy",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Destroy", "a", "virtual", "memory", "address", "region", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmar_map",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Add", "a", "memory", "mapping", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", ".",
+        "vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "zx_vm_option_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vmar_offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vmo_offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "len",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "mapped_addr",
+          "type": "zx_vaddr_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmar_unmap",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Unmap", "virtual", "memory", "pages", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "addr",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "len",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmar_protect",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Set", "protection", "of", "virtual", "memory", "pages", "."
+      ],
+      "requirements": [
+        "If", "options", "&", "ZX_VM_PERM_READ", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", "and", "have", "ZX_RIGHT_READ", ".",
+        "If", "options", "&", "ZX_VM_PERM_WRITE", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "If", "options", "&", "ZX_VM_PERM_EXECUTE", ",", "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMAR", "and", "have", "ZX_RIGHT_EXECUTE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "zx_vm_option_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "addr",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "len",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "cprng_draw_once",
+      "attributes": [
+        "*",
+        "internal"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "cprng_draw",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Draw", "from", "the", "kernel", "'", "s", "CPRNG", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "void"
+    },
+    {
+      "name": "cprng_add_entropy",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Add", "entropy", "to", "the", "kernel", "CPRNG", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "fifo_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "fifo", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "elem_count",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "elem_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out0",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        },
+        {
+          "name": "out1",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "fifo_read",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "data", "from", "a", "fifo", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_FIFO", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "elem_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "data",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "count",
+            "elem_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "count",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual_count",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "fifo_write",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Write", "data", "to", "a", "fifo", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_FIFO", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "elem_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "data",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "count",
+            "elem_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "count",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual_count",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "profile_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "scheduler", "profile", "."
+      ],
+      "requirements": [
+        "root_job", "must", "be", "of", "type", "ZX_OBJ_TYPE_JOB", "and", "have", "ZX_RIGHT_MANAGE_PROCESS", "."
+      ],
+      "arguments": [
+        {
+          "name": "root_job",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "profile",
+          "type": "zx_profile_info_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmar_unmap_handle_close_thread_exit",
+      "attributes": [
+        "*",
+        "vdsocall"
+      ],
+      "top_description": [
+        "Unmap", "memory", ",", "close", "handle", ",", "exit", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "vmar_handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "addr",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "close_handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+            "handle_release"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "futex_wake_handle_close_thread_exit",
+      "attributes": [
+        "*",
+        "vdsocall",
+        "noreturn"
+      ],
+      "top_description": [
+        "Write", "to", "futex", ",", "wake", "futex", ",", "close", "handle", ",", "exit", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "value_ptr",
+          "type": "zx_futex_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "wake_count",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "new_value",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "close_handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+            "handle_release"
+          ]
+        }
+      ],
+      "return_type": "void"
+    },
+    {
+      "name": "debuglog_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "debuglog_write",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_LOG", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "debuglog_read",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_LOG", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "ktrace_read",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "data",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "data_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "data_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "actual",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "ktrace_control",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "action",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "ptr",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "action"
+          ],
+          "attributes": [
+            "INOUT"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "ktrace_write",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "id",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "arg0",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "arg1",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "mtrace_control",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "action",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "ptr",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "ptr_size"
+          ],
+          "attributes": [
+            "INOUT"
+          ]
+        },
+        {
+          "name": "ptr_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "debug_read",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "char",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "INOUT"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "debug_write",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "buffer",
+          "type": "char",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "debug_send_command",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "char",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "interrupt_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "an", "interrupt", "object", "."
+      ],
+      "requirements": [
+        "src_obj", "must", "have", "resource", "kind", "ZX_RSRC_KIND_IRQ", "."
+      ],
+      "arguments": [
+        {
+          "name": "src_obj",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "src_num",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "interrupt_bind",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Bind", "an", "interrupt", "object", "to", "a", "port", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_INTERRUPT", "and", "have", "ZX_RIGHT_READ", ".",
+        "port_handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "port_handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "key",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "interrupt_wait",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Wait", "for", "an", "interrupt", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_INTERRUPT", "and", "have", "ZX_RIGHT_WAIT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_timestamp",
+          "type": "zx_time_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "optional"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "interrupt_destroy",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Destroys", "an", "interrupt", "object", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "interrupt_ack",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Acknowledge", "an", "interrupt", "and", "re", "-", "arm", "it", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_INTERRUPT", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "interrupt_trigger",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Triggers", "a", "virtual", "interrupt", "object", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_INTERRUPT", "and", "have", "ZX_RIGHT_SIGNAL", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "timestamp",
+          "type": "zx_time_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "interrupt_bind_vcpu",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Bind", "an", "interrupt", "object", "to", "a", "VCPU", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_INTERRUPT", "and", "have", "ZX_RIGHT_READ", ".",
+        "vcpu", "must", "be", "of", "type", "ZX_OBJ_TYPE_VCPU", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vcpu",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "ioports_request",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_IOPORT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "io_addr",
+          "type": "uint16_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "len",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_create_contiguous",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "bti", "must", "be", "of", "type", "ZX_OBJ_TYPE_BTI", "and", "have", "ZX_RIGHT_MAP", "."
+      ],
+      "arguments": [
+        {
+          "name": "bti",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "alignment_log2",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vmo_create_physical",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "VM", "object", "referring", "to", "a", "specific", "contiguous", "range", "of", "physical", "memory", "."
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_MMIO", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "paddr",
+          "type": "zx_paddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "iommu_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "new", "IOMMU", "object", "in", "the", "kernel", "."
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "type",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "desc",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "desc_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "desc_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "bti_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "new", "bus", "transaction", "initiator", "."
+      ],
+      "requirements": [
+        "iommu", "must", "be", "of", "type", "ZX_OBJ_TYPE_IOMMU", "and", "have", "ZX_RIGHT_NONE", "."
+      ],
+      "arguments": [
+        {
+          "name": "iommu",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bti_id",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "bti_pin",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Pin", "pages", "and", "grant", "devices", "access", "to", "them", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_BTI", "and", "have", "ZX_RIGHT_MAP", ".",
+        "vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_MAP", ".",
+        "If", "options", "&", "ZX_BTI_PERM_READ", ",", "vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", ".",
+        "If", "options", "&", "ZX_BTI_PERM_WRITE", ",", "vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "If", "options", "&", "ZX_BTI_PERM_EXECUTE", ",", "vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "addrs",
+          "type": "zx_paddr_t",
+          "is_array": true,
+          "array_multipliers": [
+            "addrs_count"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "addrs_count",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "pmt",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "bti_release_quarantine",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Releases", "all", "quarantined", "PMTs", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_BTI", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pmt_unpin",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Unpin", "pages", "and", "revoke", "device", "access", "to", "them", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+            "handle_release_always"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "framebuffer_get_info",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "format",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "width",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "height",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "stride",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "framebuffer_set_range",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "len",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "format",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "width",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "height",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "stride",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_get_nth_device",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "index",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_info",
+          "type": "zx_pcie_device_info_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_enable_bus_master",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "enable",
+          "type": "bool",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_reset_device",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_config_read",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_READ", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint16_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "width",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_val",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "OUT"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_config_write",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_READ", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint16_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "width",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "val",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_cfg_pio_rw",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bus",
+          "type": "uint8_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "dev",
+          "type": "uint8_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "func",
+          "type": "uint8_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint8_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "val",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "INOUT"
+          ]
+        },
+        {
+          "name": "width",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "write",
+          "type": "bool",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_get_bar",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_READ", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bar_num",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_bar",
+          "type": "zx_pci_bar_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "out_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_map_interrupt",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "which_irq",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_query_irq_mode",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "mode",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out_max_irqs",
+          "type": "uint32_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_set_irq_mode",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PCI_DEVICE", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "mode",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "requested_irq_count",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_init",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "init_buf",
+          "type": "zx_pci_init_arg_t",
+          "is_array": true,
+          "array_multipliers": [
+            "len"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "len",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pci_add_subtract_io_range",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "mmio",
+          "type": "bool",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "base",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "len",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "add",
+          "type": "bool",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pc_firmware_tables",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "handle", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "acpi_rsdp",
+          "type": "zx_paddr_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "smbios",
+          "type": "zx_paddr_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "smc_call",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Make", "Secure", "Monitor", "Call", "(", "SMC", ")", "from", "user", "space", "."
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "parameters",
+          "type": "zx_smc_parameters_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "out_smc_result",
+          "type": "zx_smc_result_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "OUT"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "resource_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "resource", "object", "."
+      ],
+      "requirements": [
+        "parent_rsrc", "must", "be", "of", "type", "ZX_OBJ_TYPE_RESOURCE", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "parent_rsrc",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "base",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "name",
+          "type": "char",
+          "is_array": true,
+          "array_multipliers": [
+            "name_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "name_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "resource_out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "guest_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "guest", "."
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_HYPERVISOR", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "guest_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        },
+        {
+          "name": "vmar_handle",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "guest_set_trap",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Sets", "a", "trap", "within", "a", "guest", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_GUEST", "and", "have", "ZX_RIGHT_WRITE", ".",
+        "port_handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "addr",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "port_handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "key",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vcpu_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "VCPU", "."
+      ],
+      "requirements": [
+        "guest", "must", "be", "of", "type", "ZX_OBJ_TYPE_GUEST", "and", "have", "ZX_RIGHT_MANAGE_PROCESS", "."
+      ],
+      "arguments": [
+        {
+          "name": "guest",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "entry",
+          "type": "zx_vaddr_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vcpu_resume",
+      "attributes": [
+        "*",
+        "blocking"
+      ],
+      "top_description": [
+        "Resume", "execution", "of", "a", "VCPU", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VCPU", "and", "have", "ZX_RIGHT_EXECUTE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "packet",
+          "type": "zx_port_packet_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "OUT"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vcpu_interrupt",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Raise", "an", "interrupt", "on", "a", "VCPU", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VCPU", "and", "have", "ZX_RIGHT_SIGNAL", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vector",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vcpu_read_state",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Read", "the", "state", "of", "a", "VCPU", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VCPU", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "vcpu_write_state",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Write", "the", "state", "of", "a", "VCPU", "."
+      ],
+      "requirements": [
+        "handle", "must", "be", "of", "type", "ZX_OBJ_TYPE_VCPU", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "handle",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "IN"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "system_mexec",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Soft", "reboot", "the", "system", "with", "a", "new", "kernel", "and", "bootimage", "."
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", ".",
+        "kernel_vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", ".",
+        "bootimage_vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "kernel_vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "bootimage_vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "system_mexec_payload_get",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Return", "a", "ZBI", "containing", "ZBI", "entries", "necessary", "to", "boot", "this", "system", "."
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "buffer",
+          "type": "any",
+          "is_array": true,
+          "array_multipliers": [
+            "buffer_size"
+          ],
+          "attributes": [
+            "OUT"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "type": "size_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "system_powerctl",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+        "resource", "must", "have", "resource", "kind", "ZX_RSRC_KIND_ROOT", "."
+      ],
+      "arguments": [
+        {
+          "name": "resource",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "cmd",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "arg",
+          "type": "zx_system_powerctl_arg_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "IN"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pager_create",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "new", "pager", "object", "."
+      ],
+      "requirements": [
+        "None", "."
+      ],
+      "arguments": [
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pager_create_vmo",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Create", "a", "pager", "owned", "vmo", "."
+      ],
+      "requirements": [
+        "pager", "must", "be", "of", "type", "ZX_OBJ_TYPE_PAGER", ".",
+        "port", "must", "be", "of", "type", "ZX_OBJ_TYPE_PORT", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "pager",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "options",
+          "type": "uint32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "port",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "key",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "size",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "out",
+          "type": "zx_handle_t",
+          "is_array": true,
+          "array_count": 1,
+          "attributes": [
+            "handle_acquire"
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pager_detach_vmo",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Detaches", "a", "vmo", "from", "a", "pager", "."
+      ],
+      "requirements": [
+        "pager", "must", "be", "of", "type", "ZX_OBJ_TYPE_PAGER", ".",
+        "vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "."
+      ],
+      "arguments": [
+        {
+          "name": "pager",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "pager_supply_pages",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        "Supply", "pages", "into", "a", "pager", "owned", "vmo", "."
+      ],
+      "requirements": [
+        "pager", "must", "be", "of", "type", "ZX_OBJ_TYPE_PAGER", ".",
+        "pager_vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", ".",
+        "aux_vmo", "must", "be", "of", "type", "ZX_OBJ_TYPE_VMO", "and", "have", "ZX_RIGHT_READ", "and", "have", "ZX_RIGHT_WRITE", "."
+      ],
+      "arguments": [
+        {
+          "name": "pager",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "pager_vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "length",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "aux_vmo",
+          "type": "zx_handle_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "aux_offset",
+          "type": "uint64_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_0",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_1",
+      "attributes": [
+        "*",
+        "test_category1"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_2",
+      "attributes": [
+        "*",
+        "test_category1"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_3",
+      "attributes": [
+        "*",
+        "test_category2"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "c",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_4",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "c",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "d",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_5",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "c",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "d",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "e",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_6",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "c",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "d",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "e",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "f",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_7",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "c",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "d",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "e",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "f",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "g",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_8",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "c",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "d",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "e",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "f",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "g",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "h",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    },
+    {
+      "name": "syscall_test_wrapper",
+      "attributes": [
+        "*"
+      ],
+      "top_description": [
+        
+      ],
+      "requirements": [
+      ],
+      "arguments": [
+        {
+          "name": "a",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "b",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        },
+        {
+          "name": "c",
+          "type": "int32_t",
+          "is_array": false,
+          "attributes": [
+          ]
+        }
+      ],
+      "return_type": "zx_status_t"
+    }
+  ]
+}

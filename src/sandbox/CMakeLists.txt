@@ -43,5 +43,6 @@ set (SOURCES sandbox.cpp
     ${LUA}/lzio.c  )
 
 add_executable(sandbox ${SOURCES} )
+SET_SOURCE_FILES_PROPERTIES( ${SOURCES} PROPERTIES LANGUAGE CXX )
 
 target_link_libraries(sandbox dl)

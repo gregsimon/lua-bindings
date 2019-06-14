@@ -1,11 +1,9 @@
 
 #include <iostream>
 
-extern "C" {
-  #include "lua.h"
-  #include "lualib.h"
-  #include "lauxlib.h"
-}
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
 
 void load_syscall_thunks(lua_State* L);
 
@@ -30,11 +28,14 @@ int main(int argc, char** argv)
 
     load_syscall_thunks(L);
 
-    lua_atpanic(L, error_cb);
-
     luaL_loadfile(L, argv[1]);
-    lua_call(L, 0, LUA_MULTRET);
 
+    try {
+      lua_call(L, 0, LUA_MULTRET);
+    } catch(std::exception &e){
+        luaL_error(L, e.what());
+    }
+ 
     std::cerr << "end\n";
 
     return 0;
