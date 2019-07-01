@@ -1,5 +1,5 @@
 
-#include "zx_system.h"
+#include "lua_system.h"
 
 #include "lua.h"
 #include "lualib.h"

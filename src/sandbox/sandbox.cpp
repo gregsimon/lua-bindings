@@ -5,7 +5,7 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
-#include "zx_system.h"
+#include "lua_system.h"
 
 void load_syscall_thunks(lua_State* L);
 

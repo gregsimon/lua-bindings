@@ -8,8 +8,8 @@ add_definitions( -DLUA_USE_LINUX)
 include_directories( ${LUA} .. )
 
 set (SOURCES sandbox.cpp
-    ../zx_system.cpp
-    ../zx_handles.cpp
+    ../lua_system.cpp
+    ../lua_handles.cpp
     ${LUA}/lapi.c
     ${LUA}/lauxlib.c
     ${LUA}/lbaselib.c
