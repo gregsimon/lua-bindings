@@ -1,10 +1,27 @@
 
-#ifndef __zx_system_h__
-#define __zx_system_h__
+#ifndef __lua_system_h__
+#define __lua_system_h__
 
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
+#include "LuaBridge/LuaBridge.h"
+#include "LuaBridge/RefCountedObject.h"
+#include "LuaBridge/RefCountedPtr.h"
+
+class Vmo : public luabridge::RefCountedObject
+{
+public: 
+  Vmo() { }
+  ~Vmo() { }
+
+  void foo(lua_State* L) {
+    printf("in foo\n");
+    luabridge::push(L, "Hello");
+  }
+};
+
+bool constructLuaSyscallThunks(lua_State* L);
 
 extern "C" {
 int lua_clock_get_monotonic(lua_State* L);
