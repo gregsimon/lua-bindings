@@ -11,8 +11,13 @@ bool constructLuaSyscallThunks(lua_State* L)
 {
   // Vmo object
   luabridge::getGlobalNamespace(L)
-    .beginClass <Vmo>("Vmo")
-      .addFunction ("foo", &Vmo::foo)
+    .beginClass <luafidl::Vmo>("Vmo")
+      .addFunction ("foo", &luafidl::Vmo::foo)
+    .endClass();
+
+  luabridge::getGlobalNamespace(L)
+    .beginClass <luafidl::Socket>("Socket")
+      .addFunction ("foo", &luafidl::Socket::foo)
     .endClass();
 
   // zx objects
@@ -83,8 +88,9 @@ int lua_event_pair_create(lua_State* L)
 
 int lua_socket_create(lua_State* L)
 {
-  // return should be on top of stack.
-  lua_pushinteger(L, 1000);
+  luabridge::RefCountedObjectPtr <luafidl::Socket> 
+        object (new luafidl::Socket());
+  luabridge::push(L, object);
   return 1;
 }
 
@@ -105,7 +111,8 @@ int lua_socket_read(lua_State* L)
 int lua_vmo_create(lua_State* L)
 {
   // allocate this object
-  luabridge::RefCountedObjectPtr <Vmo> object (new Vmo());
+  luabridge::RefCountedObjectPtr <luafidl::Vmo> 
+        object (new luafidl::Vmo());
   luabridge::push(L, object);
 
   return 1;

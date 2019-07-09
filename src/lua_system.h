@@ -9,6 +9,8 @@
 #include "LuaBridge/RefCountedObject.h"
 #include "LuaBridge/RefCountedPtr.h"
 
+namespace luafidl {
+
 class Vmo : public luabridge::RefCountedObject
 {
 public: 
@@ -16,10 +18,21 @@ public:
   ~Vmo() { }
 
   void foo(lua_State* L) {
-    printf("in foo\n");
     luabridge::push(L, "Hello");
   }
 };
+
+class Socket : public luabridge::RefCountedObject {
+    public:
+        Socket() {}
+        ~Socket() {}
+
+    void foo(lua_State* L) {
+        luabridge::push(L, "Hello from socket");
+    }
+};
+
+}; // namespace luafidl
 
 bool constructLuaSyscallThunks(lua_State* L);
 
