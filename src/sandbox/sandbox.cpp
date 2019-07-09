@@ -5,6 +5,8 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
+#include "LuaBridge/LuaBridge.h"
+
 #include "lua_system.h"
 
 void load_syscall_thunks(lua_State* L);
@@ -35,6 +37,7 @@ int main(int argc, char** argv)
     try {
       lua_call(L, 0, LUA_MULTRET);
     } catch(std::exception &e){
+      std::cerr << "exception";
         luaL_error(L, e.what());
     }
  
