@@ -1,16 +1,16 @@
 cmake_minimum_required (VERSION 2.6)
 
-set (LUA ../../third_party/lua-5.3.5/src)
-set (LUABRIDGE ../../third_party/LuaBridge )
+set (LUA ../third_party/lua-5.3.5/src)
+set (LUABRIDGE ../third_party/LuaBridge )
 
 project (sandbox)
 
 add_definitions( -DLUA_USE_LINUX)
-include_directories( ${LUA} ${LUABRIDGE}/Source .. )
+include_directories( ${LUA} ${LUABRIDGE}/Source ../src )
 
 set (SOURCES sandbox.cc
-    ../lua_system.cc
-    ../lua_handles.cc
+    ../src/lua_system.cc
+    ../src/lua_handles.cc
     ${LUA}/lapi.c
     ${LUA}/lauxlib.c
     ${LUA}/lbaselib.c
