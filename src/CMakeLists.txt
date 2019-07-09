@@ -1,12 +1,24 @@
+#[[
+    Makefile for Lua + Fuchsia runner. This includes the 
+    lua vm and syscall bindings. The FIDL codec is written
+    in Lua and injected as part of execution.
+
+    Requires the Fuchsia SDK at
+    https://fuchsia.dev/fuchsia-src/development/sdk/download
+]]
 cmake_minimum_required (VERSION 2.6)
 
 set (LUA ../third_party/lua-5.3.5/src)
 set (LUABRIDGE ../third_party/LuaBridge )
+set (FUCHSIA_SDK ../../fuchsia_sdk)
 
-project (sandbox)
+project (luarunner)
 
 add_definitions( -DLUA_USE_LINUX)
-include_directories( ${LUA} ${LUABRIDGE}/Source .. )
+include_directories( 
+    ${LUA}
+    ${LUABRIDGE}/Source 
+    )
 
 set (SOURCES main.cc
     lua_system.cc
@@ -45,7 +57,7 @@ set (SOURCES main.cc
     ${LUA}/lvm.c 
     ${LUA}/lzio.c  )
 
-add_executable(luaf ${SOURCES} )
+add_executable(luarunner ${SOURCES} )
 SET_SOURCE_FILES_PROPERTIES( ${SOURCES} PROPERTIES LANGUAGE CXX )
 
-target_link_libraries(luaf dl)
+target_link_libraries(luarunner dl)
