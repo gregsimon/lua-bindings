@@ -1,4 +1,4 @@
-// Main Lua
+// lua-runner for Fuchsia
 
 #include <iostream>
 
@@ -7,15 +7,6 @@
 #include "lauxlib.h"
 #include "lua_system.h"
 
-
-extern "C" int error_cb(lua_State* L)
-{
-  int idx = lua_gettop(L);
-  size_t len;
-
-  std::cerr << "error - " << lua_tolstring(L, idx, &len) << std::endl;
-  return 1;
-}
 
 int main(int argc, char** argv)
 {
