@@ -12,6 +12,8 @@
 #include "LuaBridge/LuaBridge.h"
 
 
+extern int luaopen_cjson_safe(lua_State *l);
+
 
 int main(int argc, char** argv)
 {
@@ -38,6 +40,8 @@ int main(int argc, char** argv)
 
       L = luaL_newstate();
       luaL_openlibs(L);
+
+      luaopen_cjson_safe(L);
 
       if (luaL_loadfile(L, "lua_generator.lua")) {
         std::cerr << "Failed to load lua_generator.lua" << std::endl;
